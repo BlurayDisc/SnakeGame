@@ -7,8 +7,6 @@ package model;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Random;
 
@@ -22,7 +20,6 @@ public class Square {
     
     public final int x, y;
     private final Rectangle2D.Double rect;
-    private final Rectangle2D.Double headRect;
     // private final Ellipse2D.Double leftEye, rightEye;
     public final int length;
     private final Color[] colors;
@@ -36,7 +33,6 @@ public class Square {
         r = new Random();
         colorIndex = r.nextInt(8);
         rect = new Rectangle2D.Double(x, y, length, length);
-        headRect = new Rectangle2D.Double(x - 1, y - 1, length + 2, length + 2);
         // leftEye = new Ellipse2D.Double(x, y + 2, length - 6, length - 6);
         // rightEye = new Ellipse2D.Double(x + 6, y + 2, length - 6, length - 6);
         
@@ -55,8 +51,9 @@ public class Square {
         g2.setPaint(Color.BLACK);
         g2.fill(rect);
         g2.setPaint(Color.WHITE);
+        Rectangle2D.Double headRect = new Rectangle2D.Double(x - 1, y - 1, length + 2, length + 2);
         g2.draw(headRect);
-        g2.setPaint(Color.RED);
+        // g2.setPaint(Color.RED);
         // g2.draw(leftEye);
         // g2.draw(rightEye);
     }
